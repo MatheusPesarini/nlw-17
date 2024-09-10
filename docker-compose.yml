@@ -1,0 +1,5 @@
+name: pocket-js-server
+
+services:
+  pg:
+    image: bitnami/postgresql
