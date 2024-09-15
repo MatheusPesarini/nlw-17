@@ -1,24 +1,25 @@
-import { z } from 'zod'
-import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { createGoalCompletion } from '../../functions/create-goal-completion'
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
+import { z } from 'zod'
 
-export const createCompletionRoute: FastifyPluginAsyncZod = async app => {
+export const createGoalCompletionRoute: FastifyPluginAsyncZod = async app => {
   app.post(
     '/completions',
     {
       schema: {
         body: z.object({
-          // Usando zod para validar o body da requisição e garantir que os tipos estão corretos
           goalId: z.string(),
         }),
       },
     },
     async request => {
       const { goalId } = request.body
-  
-      await createGoalCompletion({
+
+      const { goalCompletion } = await createGoalCompletion({
         goalId,
       })
+
+      return { goalCompletionId: goalCompletion.id }
     }
   )
 }
