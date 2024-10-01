@@ -1,3 +1,5 @@
+// Arquivo para gerar o schema do banco de dados
+
 import { pgTable, text, integer, timestamp } from 'drizzle-orm/pg-core'
 import { createId } from '@paralleldrive/cuid2' // Usado para gerar IDs únicos com defaultFn
 

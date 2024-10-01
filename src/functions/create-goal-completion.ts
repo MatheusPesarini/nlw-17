@@ -1,3 +1,6 @@
+// This function creates a goal completion for a given goal. 
+// It checks if the goal has already been completed for the current week and year, and if it has, it throws an error. Otherwise, 
+// it creates a new goal completion and returns it.
 import { db } from '../db'
 import { goalCompletions, goals } from '../db/schema'
 import dayjs from 'dayjs'
